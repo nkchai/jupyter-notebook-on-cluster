@@ -119,7 +119,7 @@ cd ~/.ssh
 # This command uses Vim to create a file named: config
 vi config
 ```
-* Add the following lines to the config file. Change the contents of the file to yours.
+* Add the following lines to the config file. Change the contents of the file to yours and save it.
 ```bash
 # Comments are allowed by using the # sign
 # This line tells SSH to use these values whenever a connection is made
