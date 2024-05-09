@@ -86,3 +86,62 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILOgJFa4p2bLzbiqSfin87zzrFC29vULvMXd+MrwHbL0
 palad@lenovo-laptop
 ```
 
+#### Connecting to the cluster via ssh
+
+After your key is succesfully added to your account you need to do the following things to connect to the cluster:
+* Connect the school VPN visit https://vpn.iit.edu and download the university VPN (cisco) software (watch out your will have to authenticate via your second factor)
+* Connect via SSH
+  * This is the example syntax
+  * `ssh -i "~\.ssh\id_ed25519_spark_edge_key" hajek@system26.rice.iit.edu`
+
+#### Cloning your Github Repo
+* Follow the same steps as [here](#generate-a-public-key-crypto-key-pair) to generate a public key pair inside your cluster.
+
+* Add the contents of the public key to your github account. 
+* Create a `config` file. Type the following commands to create a config file.
+
+```bash
+# This command changes your directory to the correct location
+cd ~/.ssh
+# This command uses Vim to create a file named: config
+vi config
+```
+* Add the following lines to the config file. Change the contents of the file to yours and save it.
+```bash
+# Comments are allowed by using the # sign
+# This line tells SSH to use these values whenever a connection is made
+# to github.com
+Host github.com
+  # This is the username or ID you created for GitHub
+  User jhajek
+  Hostname github.com
+  # This command tells SSH which Private key to use when making an SSH 
+  # connection to GitHub
+  # change the path from my username to yours
+  IdentityFile C:/Users/palad/.ssh/id_ed25519_github_key
+```
+* Clone your repository via ssh using `git clone`.
+
+#### Creating a Properties.conf
+
+Copy the below lines of code into a properties.conf and push it to your github account
+
+```
+spark.jars.packages org.apache.hadoop:hadoop-aws:3.3.0
+spark.hadoop.fs.s3a.aws.credentials.provider org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
+spark.hadoop.fs.s3a.access.key ('your ACCESSKEY from creds.txt)
+spark.hadoop.fs.s3a.secret.key ('your SECRETKEY from creds.txt)
+spark.hadoop.fs.s3a.path.style.access true
+spark.hadoop.fs.s3a.impl org.apache.hadoop.fs.s3a.S3AFileSystem 
+spark.hadoop.fs.s3a.committer.magic.enabled true
+spark.hadoop.fs.s3a.committer.name magic
+spark.hadoop.fs.s3a.endpoint http://system54.rice.iit.edu
+
+```
+
+
+
+
+
+
+
