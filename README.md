@@ -1,4 +1,14 @@
 # jupyter-notebook-on-cluster
+### Index
+- [jupyter-notebook-on-cluster](#jupyter-notebook-on-cluster)
+    - [Index](#index)
+      - [Generate a Public-key crypto key pair](#generate-a-public-key-crypto-key-pair)
+      - [Connecting to the cluster via ssh](#connecting-to-the-cluster-via-ssh)
+      - [Cloning your Github Repo](#cloning-your-github-repo)
+      - [Your Credentials](#your-credentials)
+      - [Creating a Properties.conf file](#creating-a-propertiesconf-file)
+      - [Creating and Accessing a Jupyter Notebook](#creating-and-accessing-a-jupyter-notebook)
+
 
 #### Generate a Public-key crypto key pair
 
@@ -161,7 +171,7 @@ Modify the command to include the path of your `properties.conf` present in you 
 
 Note: It is recommended that you run the above command from your home directory as the file access in the jupyter notebook is restricted to the parent folder where you ran the command.
 
-Copy and paste the URL generate after you ran the above command in a web browser to access the notebook.
+Copy and paste the URL generated, the one with `192.168.172.26`  after you ran the above command in a web browser to access the notebook.
 
 Go to `http://system76.rice.iit.edu/` to access the spark web UI
 
