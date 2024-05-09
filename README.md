@@ -1,13 +1,12 @@
 # jupyter-notebook-on-cluster
 ### Index
-- [jupyter-notebook-on-cluster](#jupyter-notebook-on-cluster)
-    - [Index](#index)
-      - [Generate a Public-key crypto key pair](#generate-a-public-key-crypto-key-pair)
-      - [Connecting to the cluster via ssh](#connecting-to-the-cluster-via-ssh)
-      - [Cloning your Github Repo](#cloning-your-github-repo)
-      - [Your Credentials](#your-credentials)
-      - [Creating a Properties.conf file](#creating-a-propertiesconf-file)
-      - [Creating and Accessing a Jupyter Notebook](#creating-and-accessing-a-jupyter-notebook)
+
+  - [Generate a Public-key crypto key pair](#generate-a-public-key-crypto-key-pair)
+- [Connecting to the cluster via ssh](#connecting-to-the-cluster-via-ssh)
+- [Cloning your Github Repo](#cloning-your-github-repo)
+- [Your Credentials](#your-credentials)
+- [Creating a Properties.conf file](#creating-a-propertiesconf-file)
+- [Creating and Accessing a Jupyter Notebook](#creating-and-accessing-a-jupyter-notebook)
 
 
 #### Generate a Public-key crypto key pair
