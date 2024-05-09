@@ -1,5 +1,5 @@
 # jupyter-notebook-on-cluster
-# jupyter-notebook-on-cluster
+
 #### Generate a Public-key crypto key pair
 
 We will be using the `ssh-keygen` command to generate your key pair. The command is the same on all platforms and will generate two keys for us, a **public key** and a **private key**. From PowerShell or the Mac or Linux Terminal run the following command:
@@ -122,6 +122,7 @@ Host github.com
 ```
 * Clone your repository via ssh using `git clone`.
 
+For more information on cloning your repo [click here](https://github.com/illinoistech-itm/jhajek/tree/master/itmd-521/git-tutorial).
 #### Your Credentials
 The credentials for you S3 bucket will be in a file named `creds.txt `located in your spark-edge server home directory. Issue the below command in your home directory to view your credentials.
 ```
@@ -145,11 +146,11 @@ spark.hadoop.fs.s3a.committer.name magic
 spark.hadoop.fs.s3a.endpoint http://system54.rice.iit.edu
 
 ```
-Note: Exclude `()` when modifying the file for the ACCESSKEY and SECRETKEY in the above file.
+Note: Exclude `()` when modifying the file for the ACCESSKEY and SECRETKEY in the above file. It is not recommended to remove any of the above configurations as they help to access you S3 bucket.
 
-You can modify this file as required to add more configurations to you spark session.
+You can modify this file as required to add more configurations to your spark session.
 
-#### Creating a Jupyter Notebook
+#### Creating and Accessing a Jupyter Notebook
 
 The below command will create a spark session with the configurations in your properties.conf and attaches that session to a Jupyter Notebook.
 
@@ -161,6 +162,8 @@ Modify the command to include the path of your `properties.conf` present in you 
 Note: It is recommended that you run the above command from your home directory as the file access in the jupyter notebook is restricted to the parent folder where you ran the command.
 
 Copy and paste the URL generate after you ran the above command in a web browser to access the notebook.
+
+Go to `http://system76.rice.iit.edu/` to access the spark web UI
 
 
 
