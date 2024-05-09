@@ -122,9 +122,16 @@ Host github.com
 ```
 * Clone your repository via ssh using `git clone`.
 
-#### Creating a Properties.conf
+#### Your Credentials
+The credentials for you S3 bucket will be in a file named `creds.txt `located in your spark-edge server home directory. Issue the below command in your home directory to view your credentials.
+```
+cat creds.txt
+```
+go to `http://system54.rice.iit.edu` and use the same credentials to view your bucket.
 
-Copy the below lines of code into a properties.conf and push it to your github account
+#### Creating a Properties.conf file
+
+Create a file named `properties.conf`, Copy the below lines of code into the file, add your `ACCESSKEY` and `SECRETKEY` and push it to your github repo
 
 ```
 spark.jars.packages org.apache.hadoop:hadoop-aws:3.3.0
@@ -138,9 +145,22 @@ spark.hadoop.fs.s3a.committer.name magic
 spark.hadoop.fs.s3a.endpoint http://system54.rice.iit.edu
 
 ```
+Note: Exclude `()` when modifying the file for the ACCESSKEY and SECRETKEY in the above file.
 
+You can modify this file as required to add more configurations to you spark session.
 
+#### Creating a Jupyter Notebook
 
+The below command will create a spark session with the configurations in your properties.conf and attaches that session to a Jupyter Notebook.
+
+```
+pyspark --master spark://sm.service.consul:7077 --packages org.apache.hadoop:hadoop-aws:3.2.3 --properties-file path-to-your-properties.conf
+```
+Modify the command to include the path of your `properties.conf` present in you repo.
+
+Note: It is recommended that you run the above command from your home directory as the file access in the jupyter notebook is restricted to the parent folder where you ran the command.
+
+Copy and paste the URL generate after you ran the above command in a web browser to access the notebook.
 
 
 
