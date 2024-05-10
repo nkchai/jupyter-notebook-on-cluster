@@ -174,6 +174,7 @@ Copy and paste the URL generated, the one with `192.168.172.26`  after you ran t
 
 Go to `http://system76.rice.iit.edu/` to access the spark web UI
 
+use `ctrl+c` in the terminal to stop the jupyter notebook.
 
 
 
