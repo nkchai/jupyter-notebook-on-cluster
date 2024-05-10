@@ -155,7 +155,7 @@ spark.hadoop.fs.s3a.committer.name magic
 spark.hadoop.fs.s3a.endpoint http://system54.rice.iit.edu
 
 ```
-Note: Exclude `()` when modifying the file for the ACCESSKEY and SECRETKEY in the above file. It is not recommended to remove any of the above configurations as they help to access you S3 bucket.
+Note: Exclude `()` when modifying the file for the ACCESSKEY and SECRETKEY in the above file. It is not recommended to remove any of the above configurations as they help to access your S3 bucket.
 
 You can modify this file as required to add more configurations to your spark session.
 
