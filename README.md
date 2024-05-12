@@ -7,9 +7,10 @@
 - [Your Credentials](#your-credentials)
 - [Creating a Properties.conf file](#creating-a-propertiesconf-file)
 - [Creating and Accessing a Jupyter Notebook](#creating-and-accessing-a-jupyter-notebook)
+- [Installing Python libraries](#installing-python-libraries)
 
 
-#### Generate a Public-key crypto key pair
+### Generate a Public-key crypto key pair
 
 We will be using the `ssh-keygen` command to generate your key pair. The command is the same on all platforms and will generate two keys for us, a **public key** and a **private key**. From PowerShell or the Mac or Linux Terminal run the following command:
 
@@ -95,7 +96,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILOgJFa4p2bLzbiqSfin87zzrFC29vULvMXd+MrwHbL0
 palad@lenovo-laptop
 ```
 
-#### Connecting to the cluster via ssh
+### Connecting to the cluster via ssh
 
 After your key is succesfully added to your account you need to do the following things to connect to the cluster:
 * Connect the school VPN visit https://vpn.iit.edu and download the university VPN (cisco) software (watch out your will have to authenticate via your second factor)
@@ -132,12 +133,17 @@ Host github.com
 * Clone your repository via ssh using `git clone`.
 
 For more information on cloning your repo [click here](https://github.com/illinoistech-itm/jhajek/tree/master/itmd-521/git-tutorial).
-#### Your Credentials
+
+### Your Credentials
 The credentials for you S3 bucket will be in a file named `creds.txt `located in your spark-edge server home directory. Issue the below command in your home directory to view your credentials.
 ```
 cat creds.txt
 ```
 go to `http://system54.rice.iit.edu` and use the same credentials to view your bucket.
+
+### Creating and Accessing a Jupyter Notebook
+
+#### Method 1:
 
 #### Creating a Properties.conf file
 
@@ -159,8 +165,6 @@ Note: Exclude `()` when modifying the file for the ACCESSKEY and SECRETKEY in th
 
 You can modify this file as required to add more configurations to your spark session.
 
-#### Creating and Accessing a Jupyter Notebook
-
 The below command will create a spark session with the configurations in your properties.conf and attaches that session to a Jupyter Notebook.
 
 ```
@@ -176,5 +180,64 @@ Go to `http://system76.rice.iit.edu/` to access the spark web UI
 
 use `ctrl+c` in the terminal to stop the jupyter notebook.
 
+#### Method 2:
 
+Run the below command to create a spark session
+```
+pyspark --master spark://sm.service.consul:7077 --packages org.apache.hadoop:hadoop-aws:3.2.3
+```
+The above command will create a spark session with packages required to connect to your S3 bucket.
 
+Now, Copy and paste the URL generated, the one with `192.168.172.26`  after you ran the above command in a web browser to access the notebook.
+
+After opening Jupyter notebook. In a new cell run the `spark.stop()` command. This ensures that the session you create above will be terminated.
+
+In a new cell, copy and paste the following code and run it:
+
+```
+from pyspark import SparkConf
+from pyspark.sql import SparkSession
+from pyspark.sql.types import IntegerType
+from pyspark.sql.functions import to_date
+
+# Removing hard coded password - using os module to import them
+import os
+import sys
+
+conf = SparkConf()
+conf.set('spark.jars.packages', 'org.apache.hadoop:hadoop-aws:3.3.0')
+conf.set('spark.hadoop.fs.s3a.aws.credentials.provider', 'org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider')
+
+conf.set('spark.hadoop.fs.s3a.access.key', os.getenv('ACCESSKEY'))
+conf.set('spark.hadoop.fs.s3a.secret.key', os.getenv('SECRETKEY'))
+# Configure these settings
+# https://medium.com/@dineshvarma.guduru/reading-and-writing-data-from-to-minio-using-spark-8371aefa96d2
+conf.set("spark.hadoop.fs.s3a.path.style.access", "true")
+conf.set("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
+# https://github.com/minio/training/blob/main/spark/taxi-data-writes.py
+# https://spot.io/blog/improve-apache-spark-performance-with-the-s3-magic-committer/
+conf.set('spark.hadoop.fs.s3a.committer.magic.enabled','true')
+conf.set('spark.hadoop.fs.s3a.committer.name','magic')
+# Internal IP for S3 cluster proxy
+conf.set("spark.hadoop.fs.s3a.endpoint", "http://infra-minio-proxy-vm0.service.consul")
+
+spark = SparkSession.builder.appName("place your app name here ").config('spark.driver.host','spark-edge.service.consul').config(conf=conf).getOrCreate()
+
+```
+
+The above code will create a new spark session with the configurations required to connect to S3 bucket. You can add your own configurations as need with `conf.set()`.
+
+Note: If you are using any configurations from external jars, you can do so by passing those jars with `--packages` flag in the pyspark submit command. You can use those configurations from these packages even after `spark.stop()`.
+
+Go to `http://system76.rice.iit.edu/` to access the spark web UI
+
+use `ctrl+c` in the terminal to stop the jupyter notebook.
+
+### Installing Python libraries
+
+The jupyter notebook generated is like any other jupyter notebook, you can install any extenal libraries with `pip`. Example:
+
+```
+pip install pandas
+```
+Note: Only spark jobs will be sent to the spark cluster, any code other than spark will be run on local compute.
