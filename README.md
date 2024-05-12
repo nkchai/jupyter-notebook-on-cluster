@@ -161,7 +161,7 @@ spark.hadoop.fs.s3a.committer.name magic
 spark.hadoop.fs.s3a.endpoint http://system54.rice.iit.edu
 
 ```
-Note: Exclude `()` when modifying the file for the ACCESSKEY and SECRETKEY in the above file. It is not recommended to remove any of the above configurations as they help to access your S3 bucket.
+**Note:** Exclude `()` when modifying the file for the ACCESSKEY and SECRETKEY in the above file. It is not recommended to remove any of the above configurations as they help to access your S3 bucket.
 
 You can modify this file as required to add more configurations to your spark session.
 
@@ -172,7 +172,7 @@ pyspark --master spark://sm.service.consul:7077 --packages org.apache.hadoop:had
 ```
 Modify the command to include the path of your `properties.conf` present in you repo.
 
-Note: It is recommended that you run the above command from your home directory as the file access in the jupyter notebook is restricted to the parent folder where you ran the command.
+**Note:** It is recommended that you run the above command from your home directory as the file access in the jupyter notebook is restricted to the parent folder where you ran the command.
 
 Copy and paste the URL generated, the one with `192.168.172.26`  after you ran the above command in a web browser to access the notebook.
 
@@ -227,7 +227,7 @@ spark = SparkSession.builder.appName("place your app name here ").config('spark.
 
 The above code will create a new spark session with the configurations required to connect to S3 bucket. You can add your own configurations as need with `conf.set()`.
 
-Note: If you are using any configurations from external jars, you can do so by passing those jars with `--packages` flag in the pyspark submit command. You can use those configurations from these packages even after `spark.stop()`.
+**Note:** If you are using any configurations from external jars, you can do so by passing those jars with `--packages` flag in the pyspark submit command. You can use those configurations from these packages even after `spark.stop()`.
 
 Go to `http://system76.rice.iit.edu/` to access the spark web UI
 
@@ -240,4 +240,4 @@ The jupyter notebook generated is like any other jupyter notebook, you can insta
 ```
 pip install pandas
 ```
-Note: Only spark jobs will be sent to the spark cluster, any code other than spark will be run on local compute.
+**Note:** Only spark jobs will be sent to the spark cluster, any code other than spark will be run on local compute.
