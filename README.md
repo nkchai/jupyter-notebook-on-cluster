@@ -104,7 +104,7 @@ After your key is succesfully added to your account you need to do the following
   * This is the example syntax
   * `ssh -i "~\.ssh\id_ed25519_spark_edge_key" hajek@system26.rice.iit.edu`
 
-#### Cloning your Github Repo
+### Cloning your Github Repo
 * Follow the same steps as [here](#generate-a-public-key-crypto-key-pair) to generate a public key pair inside your cluster.
 
 * Add the contents of the public key to your github account. 
