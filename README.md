@@ -98,7 +98,8 @@ palad@lenovo-laptop
 ### Connecting to the cluster via ssh
 
 After your key is succesfully added to your account you need to do the following things to connect to the cluster:
-* Connect the school VPN visit https://vpn.iit.edu and download the university VPN (cisco) software (watch out your will have to authenticate via your second factor)
+* Connect the school VPN visit https://vpn.iit.edu and download the university VPN (cisco) software (watch out your will have to authenticate via your second factor).
+* You need to be on the VPN to access any resources related to the cluster.
 * Connect via SSH
   * This is the example syntax
   * `ssh -i "~\.ssh\id_ed25519_spark_edge_key" hajek@system26.rice.iit.edu`
