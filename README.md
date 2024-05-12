@@ -5,7 +5,6 @@
 - [Connecting to the cluster via ssh](#connecting-to-the-cluster-via-ssh)
 - [Cloning your Github Repo](#cloning-your-github-repo)
 - [Your Credentials](#your-credentials)
-- [Creating a Properties.conf file](#creating-a-propertiesconf-file)
 - [Creating and Accessing a Jupyter Notebook](#creating-and-accessing-a-jupyter-notebook)
 - [Installing Python libraries](#installing-python-libraries)
 
