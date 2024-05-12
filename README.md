@@ -174,7 +174,11 @@ Modify the command to include the path of your `properties.conf` present in you 
 
 **Note:** It is recommended that you run the above command from your home directory as the file access in the jupyter notebook is restricted to the parent folder where you ran the command.
 
-Copy and paste the URL generated, the one with `192.168.172.26`  after you ran the above command in a web browser to access the notebook.
+Copy and paste the URL generated, the one with `192.168.172.26`  after you ran the above command in a web browser to access the notebook. The URL will be similar to the following:
+
+```
+http://192.168.172.26:9099/tree?token=306246679be9374cc0d076f1234683428dd1cdee1a652c11
+ ```
 
 Go to `http://system76.rice.iit.edu/` to access the spark web UI
 
@@ -188,7 +192,12 @@ pyspark --master spark://sm.service.consul:7077 --packages org.apache.hadoop:had
 ```
 The above command will create a spark session with packages required to connect to your S3 bucket.
 
-Now, Copy and paste the URL generated, the one with `192.168.172.26`  after you ran the above command in a web browser to access the notebook.
+Now, Copy and paste the URL generated, the one with `192.168.172.26`  after you ran the above command in a web browser to access the notebook.The URL will be similar to the following:
+
+```
+http://192.168.172.26:9099/tree?token=306246679be9374cc0d076f1234683428dd1cdee1a652c11
+ ```
+
 
 After opening Jupyter notebook. In a new cell run the `spark.stop()` command. This ensures that the session you create above will be terminated.
 
