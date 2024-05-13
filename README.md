@@ -228,7 +228,7 @@ conf.set("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
 conf.set('spark.hadoop.fs.s3a.committer.magic.enabled','true')
 conf.set('spark.hadoop.fs.s3a.committer.name','magic')
 # Internal IP for S3 cluster proxy
-conf.set("spark.hadoop.fs.s3a.endpoint", "http://infra-minio-proxy-vm0.service.consul")
+conf.set("spark.hadoop.fs.s3a.endpoint", "http://system54.rice.iit.edu")
 
 spark = SparkSession.builder.appName("place your app name here ").config('spark.driver.host','spark-edge.service.consul').config(conf=conf).getOrCreate()
 
