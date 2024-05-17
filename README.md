@@ -140,7 +140,7 @@ The credentials for you S3 bucket will be in a file named `creds.txt `located in
 ```
 cat creds.txt
 ```
-go to `http://system54.rice.iit.edu` and use the same credentials to view your bucket.
+go to `http://system54.rice.iit.edu` and use the same credentials to view your bucket. The hawk user id is your user name and random string of letters is your password.
 
 ### Creating and Accessing a Jupyter Notebook
 
