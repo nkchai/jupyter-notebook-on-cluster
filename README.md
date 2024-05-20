@@ -7,6 +7,7 @@
 - [Your Credentials](#your-credentials)
 - [Creating and Accessing a Jupyter Notebook](#creating-and-accessing-a-jupyter-notebook)
 - [Installing Python libraries](#installing-python-libraries)
+- [Downloading Datasets into Minio S3 Bucket](#downloading-datasets-into-minio-s3-bucket)
 
 
 ### Generate a Public-key crypto key pair
@@ -251,3 +252,35 @@ The jupyter notebook generated is like any other jupyter notebook, you can insta
 pip install pandas
 ```
 **Note:** Only spark jobs will be sent to the spark cluster, any code other than spark will be run on local compute.
+
+### Downloading Datasets into Minio S3 Bucket
+
+You can download the datasets into the minio bucket by following below steps. This is useful when you have to deal with large datasets.
+
+1. Use `wget` command to download the data into the spark edge server. `wget` automatically stores the donwloaded file in the folder the command was ran.
+
+        
+        wget [URL]
+       
+    You can use the below command to rename the file that's being downloaded.
+    ```
+    wget -O [filename] [URL]
+    ```
+    If you want the file to be saved in specific directory then use `-P` flag.
+    ```
+    wget -P [directory] [URL]
+    ```
+    If you want to save a file at a specified directory with a custom name then use.
+    ```
+    wget -O /path/to/directory/[filename] [URL]
+    ```
+    For more info on `wget` [click here](https://phoenixnap.com/kb/wget-command-with-examples).
+2. After Downloading the file use `mc` command to copy the files into Minio bucket.
+    ```
+    mc cp [file path] myminio/[bucketname]
+    ```
+    **Your Hawk Username is your bucketname**.
+  
+    login to Minio Console `http://system54.rice.iit.edu` with your credentials to view your bucket objects.
+
+Alternatively, You can also use ***upload button*** in the Minio Console to upload the files from your local system.
