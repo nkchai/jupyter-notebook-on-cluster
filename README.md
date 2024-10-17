@@ -100,7 +100,7 @@ palad@lenovo-laptop
 
 After your key is succesfully added to your account you need to do the following things to connect to the cluster:
 * Connect the school VPN visit https://vpn.iit.edu and download the university VPN (cisco) software (watch out your will have to authenticate via your second factor).
-* connect to the host `vpn.iit.edu`
+* connect to the host `vpn.iit.edu` in vpn client.
 * You need to be on the VPN to access any resources related to the cluster.
 * Connect via SSH
   * This is the example syntax
